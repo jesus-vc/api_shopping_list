@@ -37,6 +37,5 @@ test("Should accept POST request and return modified JSON data", async () => {
   expect(response.data).toEqual(expect.objectContaining({ added: data }));
   //TODO clarify how global variables work
   //TODO change to json file?
-  //TODO learn how to see global variable updated.
   //TODO capture axios request data. read documentation.
 });
