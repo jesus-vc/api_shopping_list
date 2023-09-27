@@ -1,7 +1,7 @@
-global.items = [
-  { name: "popsicle", price: 1.45313 },
-  { name: "cheerios", price: 3.3334 },
-];
+// global.items = [
+//   { name: "popsicle", price: 1.45313 },
+//   { name: "cheerios", price: 3.3334 },
+// ];
 
 //PEER Was it correct to export {items} rather than { global as items }?
 // As I understand, the first option exports only the items variable,
