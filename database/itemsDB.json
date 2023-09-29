@@ -1,10 +1,14 @@
 [
   {
     "name": "cheerios",
-    "price": 3.3334
+    "price": 3.35
   },
   {
-    "name": "popsicle3",
-    "price": 1.45
+    "name": "popsicle",
+    "price": 1
+  },
+  {
+    "name": "popsicle5",
+    "price": 1.43335
   }
 ]
