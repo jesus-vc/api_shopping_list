@@ -12,9 +12,9 @@ export const getAllData = (file) => {
 
 //PEER
 //I think reading and writing to the itemsDB.json file does not scale well, once the file grows to be large.
-//So what are alternatives? Streams?
+//So what are alternatives? Streams? DBs?
 
-export const updateData = (file, newData) => {
+export const addData = (file, newData) => {
   try {
     // fs.appendFileSync(file, JSON.stringify(newData));
     // const data = fs.readFileSync("./database/itemsDB.json");
@@ -29,6 +29,25 @@ export const updateData = (file, newData) => {
     return getAllData(file);
   } catch (err) {
     console.error(err);
+  }
+};
+
+export const patchData = (file, newData) => {
+  try {
+    const jsonData = getAllData(file);
+    // find first matching item.
+    const index = jsonData.findIndex((item) => item.name == newData.name);
+
+    // modify original array
+    if (index !== -1) {
+      jsonData[index] = newData;
+      const updatedJsonData = JSON.stringify(jsonData, null, 2);
+      fs.writeFileSync(file, updatedJsonData, "utf8");
+    } else {
+      return "The item you chose is not in the current database.";
+    }
+  } catch (err) {
+    throw new Error(err);
   }
 };
 
