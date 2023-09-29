@@ -1,5 +1,5 @@
 import express from "express";
-import { addData, getAllData, patchData } from "./helpers.js";
+import { addData, getAllData, patchData, deleteData } from "./helpers.js";
 
 //PEER Is the pattern below preferable where I created a third exportFakeDB.js file simply to export a global var?
 // import { globalItems } from "../database/exportfakeDB.js";
@@ -31,6 +31,16 @@ router.patch("/:name", (req, res) => {
     res.status(400).send(result);
   } else {
     res.send({ updated: req.body });
+  }
+});
+
+router.delete("/:name", (req, res) => {
+  const result = deleteData("./database/itemsDB.json", req.params.name);
+
+  if (result) {
+    res.status(400).send(result);
+  } else {
+    res.send({ deleted: req.params.name });
   }
 });
 

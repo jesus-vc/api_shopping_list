@@ -1,5 +1,3 @@
-// TODO redo tests using supertest.
-
 import axios from "axios";
 import { getAllData } from "../src/helpers.js";
 import { clearDB } from "./helpers.js";
@@ -62,4 +60,21 @@ describe("Updating data", () => {
       expect.objectContaining({ updated: newData })
     );
   });
+});
+
+test("Should delete a single item", async () => {
+  //newData below should already be in databse.
+  let newData = { name: "popsicle-test3", price: 1.43335 };
+
+  let responseDelete = await axios.delete(
+    `http://localhost:3011/items/${newData.name}`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  expect(responseDelete.data).toEqual(
+    expect.objectContaining({ deleted: newData.name })
+  );
 });

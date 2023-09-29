@@ -51,13 +51,21 @@ export const patchData = (file, newData) => {
   }
 };
 
-// export const someData = () => {
-//   try {
-//     const data = fs.readFileSync("./database/itemsDB.json");
-//     return JSON.parse(data);
-//     // console.log(typeof JSON.parse(data));
-//     // console.log(JSON.parse(data)[0].price);
-//   } catch (err) {
-//     console.error(err);
-//   }
-// };
+export const deleteData = (file, data) => {
+  try {
+    const jsonData = getAllData(file);
+    // find first matching item.
+    console.log("data.name");
+    console.log(data);
+    const index = jsonData.findIndex((item) => item.name == data);
+    if (index !== -1) {
+      jsonData.splice(index, 1);
+      const updatedJsonData = JSON.stringify(jsonData, null, 2);
+      fs.writeFileSync(file, updatedJsonData, "utf8");
+    } else {
+      return "The item you chose is not in the current database.";
+    }
+  } catch {
+    throw new Error(err);
+  }
+};
