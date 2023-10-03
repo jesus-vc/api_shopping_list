@@ -10,5 +10,29 @@
   {
     "name": "apple",
     "price": 1.43335
+  },
+  {
+    "name": "watermellon",
+    "price": 1.43335
+  },
+  {
+    "name": "watermellon2",
+    "price": 1.432
+  },
+  {
+    "name": "cake",
+    "price": 3.75
+  },
+  {
+    "name": "watermellon3",
+    "price": 1.432
+  },
+  {
+    "name": "watermellon3",
+    "price": 1.432
+  },
+  {
+    "name": "watermellon3",
+    "price": 1.432
   }
 ]

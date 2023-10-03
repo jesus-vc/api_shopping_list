@@ -1,7 +1,11 @@
 import express from "express";
 import { addData, getAllData, patchData, deleteData } from "./helpers.js";
 
-//PEER Is the pattern below preferable where I created a third exportFakeDB.js file simply to export a global var?
+//PEER
+// This assignment required me to use global variables, but I ended up using JSON file.
+// Still, one question I have is whether the pattern below is acceptable where I created a third exportFakeDB.js file simply to export a global var.
+// I don't like this option since I feel this creates unecesary code and files,
+// and I sense that this is a mute point given I'll be using databases moving forward rather than global variables.
 // import { globalItems } from "../database/exportfakeDB.js";
 // const globalItems = global.items;
 
@@ -48,8 +52,6 @@ router.use("/add", express.json());
 
 router.post("/add", (req, res) => {
   const result = addData("./database/itemsDB.json", req.body);
-  // console.log("req.body from 47");
-  // console.log(typeof req.body);
   const lastAddition = result[result.length - 1];
   res.send({ added: lastAddition });
 });
